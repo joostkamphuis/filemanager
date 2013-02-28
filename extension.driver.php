@@ -2,7 +2,6 @@
 /**
  * @package filemanager
  * @author thomas appel <mail@thomas-appel.com>
-
  * Displays <a href="http://opensource.org/licenses/gpl-3.0.html">GNU Public License</a>
  * @license http://opensource.org/licenses/gpl-3.0.html GNU Public License
  */
@@ -96,6 +95,9 @@ cLass extension_filemanager extends Extension
 
     public static function hasInstance($ext_name=NULL, $section_handle)
     {
+        if ( is_null($section_handle) ){
+            return false;
+        }
         $sid  = SectionManager::fetchIDFromHandle($section_handle);
         $section = SectionManager::fetch($sid);
         $fm = $section->fetchFields($ext_name);
